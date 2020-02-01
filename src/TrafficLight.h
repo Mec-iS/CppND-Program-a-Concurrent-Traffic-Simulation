@@ -24,7 +24,7 @@ public:
 
 
 private:
-    std::dequeue<TrafficLightPhase> _queue;
+    std::dequeTrafficLightPhase> _queue;
     std::condition_variable _cond;
     std::mutex _mtx;
     
@@ -43,7 +43,6 @@ class TrafficLight: public TrafficObject
 public:
     // constructor / desctructor
     TrafficLight();
-    ~TrafficLight();
 
     // getters / setters
     TrafficLightPhase getCurrentPhase();
@@ -52,9 +51,8 @@ public:
     }
 
     // typical behaviour methods
-    void waitForGreen() {}
-    void simulate() {}
-    TrafficLightPhase getCurrentPhase() {}
+    void waitForGreen();
+    void simulate();
 
 private:
     // typical behaviour methods

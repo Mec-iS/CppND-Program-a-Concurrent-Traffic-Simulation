@@ -51,8 +51,8 @@ void TrafficLight::waitForGreen()
     // runs and repeatedly calls the receive function on the message queue. 
     // Once it receives TrafficLightPhase::green, the method returns.
     while(true) {
+        _queue.receive();
         if(this->getCurrentPhase() == TrafficLightPhase::green) {
-            _queue.receive();
             return;
         }
         std::this_thread::sleep_for(std::chrono::milliseconds(1));
@@ -87,8 +87,8 @@ void TrafficLight::cycleThroughPhases()
         if (n == 0) {
             // toggle light signal
             this->togglePhase();
-            // auto phase = this->getCurrentPhase();
-            // _queue.send(std::move(phase));
+            auto phase = this->getCurrentPhase();
+            _queue.send(std::move(phase));
             // reset the countdown to randint(4,6)
             n = rand() % 3 + 4;
         } else {

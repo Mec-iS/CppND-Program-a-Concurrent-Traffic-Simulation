@@ -47,6 +47,7 @@ Intersection::Intersection()
 {
     _type = ObjectType::objectIntersection;
     _isBlocked = false;
+    TrafficLight _trafficLight();
 }
 
 void Intersection::addStreet(std::shared_ptr<Street> street)
